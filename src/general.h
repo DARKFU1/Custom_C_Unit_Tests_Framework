@@ -6,5 +6,6 @@
 #include <stdarg.h>
 #include <assert.h>
 
+#include "log.h"
 
 #endif
