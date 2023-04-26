@@ -22,7 +22,7 @@ init:
 	-@mkdir bin/
 
 build: $(OBJ)
-	gcc $(COMPILER_FLAGS) $^ -o $(DBIN)/out
+	gcc $(COMPILER_FLAGS) $^ -o out
 
 $(DOBJ)/%.o: $(DSRC)/%.c
 	gcc -c $(COMPILER_FLAGS) $< -o $@
