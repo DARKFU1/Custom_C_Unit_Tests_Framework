@@ -7,7 +7,7 @@ DSRC = src
 DTEST = test
 DBIN = bin
 
-COMPILER_FLAGS = -g -DCOLOR_LOGS
+COMPILER_FLAGS = -g -DCOLOR_LOGS -DCOLOR_TESTS
 
 SRC = main.c\
       log.c\
