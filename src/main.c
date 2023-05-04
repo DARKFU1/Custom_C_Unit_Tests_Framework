@@ -1,8 +1,10 @@
 #include "general.h"
 
-#define DEFINE_TESTS() void __define_tests__() {
+#define DEFINE_TESTS() void __define_tests__() {\
+	int __tests_iterator = 0;
 #define END_DEFINE_TESTS() }
-#define ADD_TEST(name) __tests[name].test_function = __test_##name;
+#define ADD_TEST(name) __tests[__tests_iterator].test_function = __test_##name;\
+								 __tests_iterator++;
 
 #define MAX_TEST_COUNT 4000
 
@@ -15,13 +17,6 @@ typedef	struct
 
 static _test_ __tests[MAX_TEST_COUNT];
 
-enum
-{
-	Hello = 0,
-	Test1 = 1,
-	Test2 = 2,
-};
-
 #define TEST(name); int __test_##name()
 
 #define CALL_TESTS() __define_tests__();\
@@ -29,6 +24,10 @@ enum
 	{\
 		__tests[i].test_function();\
 	}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 TEST(Hello)
 {
@@ -56,9 +55,12 @@ DEFINE_TESTS()
 
 END_DEFINE_TESTS()
 
-int main()
+int main(const int argc, const char** argv)
 {
-	CALL_TESTS();
+	if(argc > 1)
+	{
+		if(!strcmp(argv[1], "-t")) CALL_TESTS();
+	}
 	
 	return 0;
 }
