@@ -41,11 +41,13 @@
 
 #define DEFINE_TESTS() void __define_tests__() {\
 	int __tests_iterator = 0;
+
 #define END_DEFINE_TESTS() }
+
 #define ADD_TEST(name) __tests[__tests_iterator].test_function = __test_##name;\
 			__tests[__tests_iterator].__name = #name; \
 			 __tests_iterator++;
-#define TEST(name); void __test_##name() // in the end we have __test_name()
+#define TEST(name) void __test_##name() // in the end we have __test_name()
 
 // tests struct
 typedef	struct 
@@ -61,6 +63,7 @@ static _test_* _current_test;
 static const char* __error_msg;
 
 // calling tests
+// the code is complete mess, but it works fine
 #define CALL_TESTS() __define_tests__(); \
 	for(int i = 0; (__tests[i]).test_function != NULL; ++i) \
 	{ \
@@ -89,7 +92,6 @@ static const char* __error_msg;
 	} 
 
 /* check methods ( assertion methods ) */
-
 #define ASSERT_TRUE_MSG(value, msg) if(!value) { _current_test->state = 0;\
 					__error_msg = msg; \
 					return; }
