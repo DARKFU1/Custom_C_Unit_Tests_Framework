@@ -1,6 +1,13 @@
 #ifndef __TESTS_H
 #define __TESTS_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define MAX_TEST_COUNT 4000
 
 /*------------------------------------------------------------------------------
@@ -62,6 +69,14 @@ static _test_ __tests[MAX_TEST_COUNT];
 static _test_* _current_test;
 static const char* __error_msg;
 
+typedef struct
+{
+	unsigned int tests_passed;
+	unsigned int test_count;
+	const char* name;
+	_test_* tests;
+} _test_suite_;
+
 // calling tests
 // the code is complete mess, but it works fine
 #define CALL_TESTS() __define_tests__(); \
@@ -103,5 +118,9 @@ static const char* __error_msg;
 #define COMPARE_FUNC(func, value, expect) ASSERT_TRUE( func( value, expect ) )
 #define COMPARE_STRING(value, expect) ASSERT_TRUE(!strcmp(value, expect))
 #define COMPARE(value, expect) ASSERT_TRUE(value == expect)
+
+#ifdef _cplusplus
+}
+#endif // _cplusplus
 
 #endif // __TESTS_H
