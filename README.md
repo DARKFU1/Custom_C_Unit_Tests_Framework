@@ -23,7 +23,7 @@ void CallUnitTests()
 
 How to define tests?
 
-It's simple you have to write TEST(name), where name of test is written without `"`, and cannot contain ONLY symbols, numbers and underscore.
+It's simple! you have to write TEST(name), where name of test is written without `"`, and can contain ONLY symbols, numbers and underscore.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ...
@@ -61,12 +61,18 @@ Now let's talk about how you check if everything's alright
 there are some macroses:
 
 `ASSERT_TRUE(value)` - if value isn's true, unit test is failed.
-`ASSERT_TRUE_MSG(value)` - same as `ASSERT_TRUE` but if failed prints message
+###
+`ASSERT_TRUE_MSG(value)` - same as `ASSERT_TRUE` but if failed prints message.
+###
 `ASSERT_FALSE(value)` - if value isn't false, unit test is failed.
-`ASSERT_FALSE(value, msg)` - same as `ASSERT_FALSE` but if failed prints message
+###
+`ASSERT_FALSE(value, msg)` - same as `ASSERT_FALSE` but if failed prints message.
+###
 `COMPARE(value, expect)` - compares two values using '==', if false - fails.
+###
 `COMPARE_STRING(value, expect)` - compares two strings using `strcmp()`, if different - fails.
-`COMPARE_FUNC(func, value, expect)` - compares two values using func(value, expect), if false - fails.
+###
+`COMPARE_FUNC(func, value, expect)` - compares two values using func(value, expect), if returns false - fails.
 
 ---
 
