@@ -72,7 +72,7 @@ there are some macroses:
 ###
 `COMPARE_STRING(value, expect)` - compares two strings using `strcmp()`, if different - fails.
 ###
-`COMPARE_FUNC(func, value, expect)` - compares two values using '_func(value, expect)_', if returns false - fails.
+`COMPARE_FUNC(func, value, expect)` - compares two values using '_func(value, expect)_', if returns _false_ - fails.
 
 ---
 
