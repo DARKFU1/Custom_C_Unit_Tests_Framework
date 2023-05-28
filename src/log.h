@@ -4,12 +4,15 @@
 #include "general.h"
 
 
-#define DEBUG_LEVEL 	0
-#define SUCCESS_LEVEL	1
-#define LOG_LEVEL 	2
-#define WARN_LEVEL 	4
-#define ERROR_LEVEL 	8
-#define FATAL_LEVEL 	16
+enum
+{
+	DEBUG_LEVEL = 0,
+	SUCCESS_LEVEL = 1,
+	LOG_LEVEL = 2,
+	WARN_LEVEL = 4,
+	ERROR_LEVEL = 8,
+	FATAL_LEVEL = 16,
+};
 
 void PrintLogLayout(const int level, const char* file, const int line);
 const char* GetLogLevel(const int level);

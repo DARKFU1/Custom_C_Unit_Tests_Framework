@@ -46,7 +46,7 @@ extern "C" {
 
 /* defining tests */
 
-#define DEFINE_TESTS() void __define_tests__() {\
+#define DEFINE_TESTS() static void __define_tests__() {\
 	int __tests_iterator = 0;
 
 #define END_DEFINE_TESTS() }
@@ -77,6 +77,37 @@ typedef struct
 	_test_* tests;
 } _test_suite_;
 
+void CallTests()
+{
+	__define_tests__();
+
+	for(int i = 0; (__tests[i]).test_function != NULL; ++i) \
+	{ 
+		__error_msg = NULL;
+		_current_test = &__tests[i]; 
+		__tests[i].state = 1; 
+		
+		printf("%sRunning test:%s %s... ",
+				__B_BLU_CL, __RES_CL, 
+				_current_test->__name); 
+		fflush(stdout); 
+		__tests[i].test_function(); 
+		if(!__tests[i].state) /* if failed */ 
+		{ 
+			if(__error_msg != NULL ) printf("%s\t[ FAIL ]%s %s\n",
+					__B_RED_CL,
+					__RES_CL,
+				       	__error_msg);
+
+			else { printf("%s\t[ FAIL ]%s \n", __B_RED_CL, __RES_CL); } 
+		} 
+		else
+		{
+			printf("%s\t[ PASS ]%s\n", __B_GRN_CL, __RES_CL); 
+		}
+	}
+}
+
 // calling tests
 // the code is complete mess, but it works fine
 #define CALL_TESTS() __define_tests__(); \
@@ -98,11 +129,11 @@ typedef struct
 					__BR_BLK_CL,\
 				       	__error_msg,\
 					__RES_CL);}\
-			else { printf("%s[ FAIL ]%s \n", __B_RED_CL, __RES_CL); } \
+			else { printf("%s\t[ FAIL ]%s \n", __B_RED_CL, __RES_CL); } \
 		} \
 		else\
 		{\
-			printf("%s[ PASS ]%s\n", __B_GRN_CL, __RES_CL); \
+			printf("%s\t[ PASS ]%s\n", __B_GRN_CL, __RES_CL); \
 		}\
 	} 
 

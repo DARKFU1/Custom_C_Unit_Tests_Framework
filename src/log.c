@@ -17,15 +17,15 @@ const char* GetLogLevel(const int level)
 		case 0:
 			return "\x1B[1;30mDEBUG  "; // space so it looks symmetric
 		case 1:
-			return "\x1B[0;32mSUCCESS"; // same
+			return "\x1B[0;32mSUCCESS"; 
 		case 2:
-			return "\x1B[0;34mINFO   "; // same
+			return "\x1B[0;34mINFO   ";
 		case 4:
-			return "\x1B[0;33mWARN   "; // same
+			return "\x1B[0;33mWARN   ";
 		case 8:
-			return "\x1B[0;31mERROR  "; // same
+			return "\x1B[0;31mERROR  ";
 		case 16:
-			return "\x1B[0;35mFATAL  "; // same
+			return "\x1B[0;35mFATAL  ";
 		default:
 			return "";
 	}
@@ -35,15 +35,15 @@ const char* GetLogLevel(const int level)
 		case 0:
 			return "DEBUG  "; // space so it looks symetric
 		case 1:
-			return "SUCCESS"; // same
+			return "SUCCESS";
 		case 2:
-			return "INFO   "; // same
+			return "INFO   ";
 		case 4:
-			return "WARN   "; // same
+			return "WARN   ";
 		case 8:
-			return "ERROR  "; // same
+			return "ERROR  ";
 		case 16:
-			return "FATAL  "; // same
+			return "FATAL  ";
 		default:
 			return "";
 	}
